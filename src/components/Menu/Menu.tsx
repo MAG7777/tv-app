@@ -28,14 +28,14 @@ function Menu() {
       {isOpen && (
         <div className={styles.profile}>
           <img src="/assets/images/profile-avatar.jpg" alt="Profile" className={styles.avatar} />
-          <span>Daniel</span>
+          <h2>Daniel</h2>
         </div>
       )}
       <ul className={styles.items}>
         {menuItems.map((item) => (
           <li key={item.label} className={styles.item}>
             <img src={`/assets/icons/${item.icon}.png`} alt={item.label} className={styles.icon} />
-            {isOpen && <span>{item.label}</span>}
+            {isOpen && <h2>{item.label}</h2>}
           </li>
         ))}
       </ul>

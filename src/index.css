@@ -3,8 +3,11 @@
   color-scheme: dark;
   background-color: #000;
   color: #fff;
-  --menu-width-closed: 60px;
+  --menu-width-closed: 100px;
   --menu-width-open: 250px;
+
+  /* --menu-width-closed: 10%;   closed width */
+  /* --menu-width-open: 20%;     open/hover width */
 }
 
 body {
@@ -19,8 +22,18 @@ body {
   max-width: 100vw;
 }
 
-.main-content {
+/* .main-content {
   flex: 1;
   padding: 20px;
   overflow-x: hidden;
+  background: red;
+} */
+
+
+.main-content {
+  margin-left: var(--menu-width-closed);
+  width: calc(100% - var(--menu-width-closed));
+  padding: 20px;
+  overflow-x: hidden;
+  /* background: red; */
 }
