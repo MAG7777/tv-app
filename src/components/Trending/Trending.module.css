@@ -1,0 +1,89 @@
+.trending {
+  margin-top: 40px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 10px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.item {
+  width: 150px;
+  height: 220px;
+  object-fit: cover;
+  cursor: pointer;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  transition: transform 0.2s;
+}
+
+.item:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 767px) { /* Mobile */
+  .trending {
+    margin-top: 20px;
+  }
+  h2 {
+    font-size: 18px;
+  }
+  .item {
+    width: 100px;
+    height: 150px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) { /* Tablet */
+  .trending {
+    margin-top: 30px;
+  }
+  h2 {
+    font-size: 20px;
+  }
+  .item {
+    width: 120px;
+    height: 180px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) { /* Laptop */
+  .trending {
+    margin-top: 40px;
+  }
+  h2 {
+    font-size: 24px;
+  }
+  .item {
+    width: 150px;
+    height: 220px;
+  }
+}
+
+@media (min-width: 1440px) { /* TV */
+  .trending {
+    margin-top: 50px;
+  }
+  h2 {
+    font-size: 28px;
+  }
+  .item {
+    width: 200px;
+    height: 300px;
+  }
+}
