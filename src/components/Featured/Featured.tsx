@@ -11,7 +11,7 @@ function Featured({ movie, isVideoPlaying, onVideoError }: FeaturedProps) {
   const durationSeconds = Number(movie.Duration);
   const hours = Math.floor(durationSeconds / 3600);
   const minutes = Math.floor((durationSeconds % 3600) / 60);
-  const durationStr = `${hours ? `${hours}h ` : ''}${minutes}m`;
+  const durationStr = hours ? `${hours}h ${minutes}m` : `${minutes}m`;
 
   return (
     <div className={styles.featured}>

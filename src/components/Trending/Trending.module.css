@@ -94,3 +94,8 @@ h2 {
     height: 300px;
   }
 }
+
+.item.active {
+  border: 2px solid #fff;
+  transform: scale(1.1);
+}

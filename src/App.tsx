@@ -1,66 +1,36 @@
-import { useEffect, useState } from 'react';
-import type { IData, IMovie } from './types/movie';
 import Menu from './components/Menu/Menu';
 import Featured from './components/Featured/Featured';
 import Trending from './components/Trending/Trending';
 import data from './data.json';
+import { useTrendingMovies } from './hooks/useTrendingMovies';
+import { useFeaturedMovie } from './hooks/useFeaturedMovie';
+import type { IData } from './types/movie';
 import './App.css';
 
 const jsonData: IData = data as IData;
 
 function App() {
-  const [featured, setFeatured] = useState<IMovie>(jsonData.Featured);
-  const [trending, setTrending] = useState<IMovie[]>([]);
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-
-  useEffect(() => {
-    const sortedTrending = [...jsonData.TrendingNow].sort((a, b) => 
-      new Date(b.Date).getTime() - new Date(a.Date).getTime()
-    ).slice(0, 50);
-
-    const storedId = sessionStorage.getItem('lastMovieID');
-    console.log('Stored ID from session:', storedId); 
-    if (storedId) {
-      const lastMovie = sortedTrending.find(m => m.Id === storedId);
-      console.log('Found last movie:', lastMovie); 
-      if (lastMovie) {
-        const filtered = sortedTrending.filter(m => m.Id !== storedId);
-        setTrending([lastMovie, ...filtered]);
-      } else {
-        setTrending(sortedTrending);
-      }
-    } else {
-      setTrending(sortedTrending);
-    }
-  }, []);
-
-  const handleMovieClick = (movie: IMovie) => {
-    setFeatured(movie);
-    sessionStorage.setItem('lastMovieID', movie.Id);
-    setIsVideoPlaying(false);
-    setTimeout(() => {
-      if (movie.VideoUrl) {
-        setIsVideoPlaying(true);
-      }
-    }, 2000);
-  };
+  const { trending } = useTrendingMovies();
+  const { featured, isVideoPlaying, handleMovieClick } = useFeaturedMovie(jsonData.Featured);
 
   const handleVideoError = () => {
     console.error('Video failed to load:', featured.VideoUrl);
-    setIsVideoPlaying(false); 
   };
 
   return (
     <div className="app-container">
       <Menu />
       <div className="main-content">
-        <Featured 
-          key={featured.Id} 
-          movie={featured} 
-          isVideoPlaying={isVideoPlaying} 
-          onVideoError={handleVideoError} 
+        <Featured
+          movie={featured}
+          isVideoPlaying={isVideoPlaying}
+          onVideoError={handleVideoError}
         />
-        <Trending movies={trending} onMovieClick={handleMovieClick} />
+        <Trending
+          movies={trending}
+          featuredMovie={featured}
+          onMovieClick={handleMovieClick}
+        />
       </div>
     </div>
   );
