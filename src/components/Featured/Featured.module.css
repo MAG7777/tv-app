@@ -75,8 +75,7 @@
   cursor: pointer;
 }
 
-/* Responsive Breakpoints */
-@media (max-width: 767px) { /* Mobile */
+@media (max-width: 767px) { 
   .featured {
     height: 40vh;
     min-height: 200px;
@@ -122,7 +121,7 @@
   }
 }
 
-@media (min-width: 1024px) and (max-width: 1439px) { /* Laptop */
+@media (min-width: 1024px) and (max-width: 1439px) { 
   .featured {
     height: 50vh;
     min-height: 300px;
@@ -145,7 +144,7 @@
   }
 }
 
-@media (min-width: 1440px) { /* TV */
+@media (min-width: 1440px) { 
   .featured {
     height: 60vh;
     min-height: 400px;

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import './App.css'; // If needed, but we'll use modules
 import type { IData, IMovie } from './types/movie';
 import Menu from './components/Menu/Menu';
 import Featured from './components/Featured/Featured';
 import Trending from './components/Trending/Trending';
 import data from './data.json';
+import './App.css';
 
 const jsonData: IData = data as IData;
 
@@ -19,10 +19,10 @@ function App() {
     ).slice(0, 50);
 
     const storedId = sessionStorage.getItem('lastMovieID');
-    console.log('Stored ID from session:', storedId); // Debug
+    console.log('Stored ID from session:', storedId); 
     if (storedId) {
       const lastMovie = sortedTrending.find(m => m.Id === storedId);
-      console.log('Found last movie:', lastMovie); // Debug
+      console.log('Found last movie:', lastMovie); 
       if (lastMovie) {
         const filtered = sortedTrending.filter(m => m.Id !== storedId);
         setTrending([lastMovie, ...filtered]);
@@ -47,7 +47,7 @@ function App() {
 
   const handleVideoError = () => {
     console.error('Video failed to load:', featured.VideoUrl);
-    setIsVideoPlaying(false); // Revert to image
+    setIsVideoPlaying(false); 
   };
 
   return (

@@ -4,7 +4,7 @@ import styles from './Featured.module.css';
 interface FeaturedProps {
   movie: IMovie;
   isVideoPlaying: boolean;
-  onVideoError: () => void; // Callback to handle video error
+  onVideoError: () => void; 
 }
 
 function Featured({ movie, isVideoPlaying, onVideoError }: FeaturedProps) {
@@ -24,7 +24,7 @@ function Featured({ movie, isVideoPlaying, onVideoError }: FeaturedProps) {
             playsInline
             src={movie.VideoUrl}
             className={styles.video}
-            onError={onVideoError} // Trigger parent callback on error
+            onError={onVideoError}
           />
         ) : (
           <img
