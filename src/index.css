@@ -3,17 +3,14 @@
   color-scheme: dark;
   background-color: #000;
   color: #fff;
-  --menu-width-closed: 100px;
+  --menu-width-closed: 150px;
   --menu-width-open: 250px;
-
-  /* --menu-width-closed: 10%;   closed width */
-  /* --menu-width-open: 20%;     open/hover width */
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: hidden;
 }
 
 .app-container {
@@ -22,18 +19,9 @@ body {
   max-width: 100vw;
 }
 
-/* .main-content {
-  flex: 1;
-  padding: 20px;
-  overflow-x: hidden;
-  background: red;
-} */
-
 
 .main-content {
   margin-left: var(--menu-width-closed);
   width: calc(100% - var(--menu-width-closed));
-  padding: 20px;
   overflow-x: hidden;
-  /* background: red; */
 }
